@@ -1,4 +1,96 @@
-/* ==================== 14. STYLES DES PAGES SUPPLÉMENTAIRES ==================== */
+/* ==================== 15. PAGE DE COMMANDE ==================== */
+
+.order-page__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.order-form__title {
+    font-size: 2rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-note {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+}
+
+.order-summary {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+}
+
+.order-summary__content {
+    background-color: var(--gray-color);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.order-summary__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+}
+
+.order-summary__line-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.order-summary__total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+}
+
+.order-summary__total .price {
+    color: var(--primary-color);
+}
+
+.order-summary__secure {
+    margin-top: 2rem;
+    text-align: center;
+    color: #555;
+    font-weight: 500;
+}
+.order-summary__secure i {
+    color: #28a745;
+    margin-right: 0.5rem;
+}
+
+/* Responsive pour la page commande */
+@media screen and (max-width: 992px) {
+    .order-page__container {
+        grid-template-columns: 1fr;
+    }
+    .order-summary {
+        position: static;
+        margin-top: 3rem;
+    }
+}/* ==================== 14. STYLES DES PAGES SUPPLÉMENTAIRES ==================== */
 
 /* En-tête de page générique */
 .page-header {

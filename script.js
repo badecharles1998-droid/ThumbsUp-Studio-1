@@ -1,4 +1,47 @@
-// Attendre que le contenu du DOM soit entièrement chargé avant d'exécuter le script
+/* ==================== PAGE COMMANDE DYNAMIQUE ==================== */
+// Ce code s'exécute uniquement si nous sommes sur la page commande.html
+if (document.querySelector('.order-page__container')) {
+    
+    // 1. Définir les détails de nos packs
+    const packages = {
+        'unique': { name: 'Miniature Unique', price: '25€' },
+        'createur': { name: 'Pack Créateur (5 miniatures)', price: '115€' },
+        'pro': { name: 'Pack Pro (10 miniatures)', price: '220€' },
+        'agence': { name: 'Pack Agence (20 miniatures)', price: '420€' }
+    };
+    
+    // 2. Récupérer le paramètre 'pack' dans l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPackKey = urlParams.get('pack');
+    
+    // 3. Récupérer les éléments du DOM à mettre à jour
+    const summaryDetailsContainer = document.getElementById('summary-details');
+    const packageInput = document.getElementById('package-input');
+
+    // 4. Mettre à jour le résumé de commande si un pack est sélectionné
+    if (selectedPackKey && packages[selectedPackKey]) {
+        const selectedPackage = packages[selectedPackKey];
+
+        // Mettre à jour le contenu HTML du résumé
+        summaryDetailsContainer.innerHTML = `
+            <div class="order-summary__line-item">
+                <span>Pack sélectionné</span>
+                <strong>${selectedPackage.name}</strong>
+            </div>
+            <div class="order-summary__total">
+                <span>Total</span>
+                <span class="price">${selectedPackage.price}</span>
+            </div>
+        `;
+
+        // Remplir le champ caché du formulaire pour savoir quelle offre a été commandée
+        packageInput.value = selectedPackage.name;
+
+    } else {
+        // Le contenu par défaut (déjà dans le HTML) sera affiché si aucun pack n'est trouvé
+        console.log("Aucun pack valide sélectionné dans l'URL.");
+    }
+}// Attendre que le contenu du DOM soit entièrement chargé avant d'exécuter le script
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==================== MENU MOBILE (BURGER) ==================== */
